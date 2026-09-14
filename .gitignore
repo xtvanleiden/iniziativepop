@@ -23,3 +23,5 @@ export/
 
 # credenziale reale trovata nella media library del sito originale — mai da pubblicare
 site/wp-content/uploads/2025/06/stripe_backup_code.txt
+
+.vercel

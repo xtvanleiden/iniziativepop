@@ -28,6 +28,8 @@ Sorgente: `https://comitatoiniziativepopolari.it/`
 | `wire_contact_form.py` | Collega il form Contattaci a un servizio esterno |
 | `fix_404.py` | Sostituisce la ricerca nella pagina 404 con link alle sezioni |
 | `make_sitemap.py` | Genera `sitemap.xml` e `robots.txt` per il nuovo dominio |
+| `flatten_proposte_menu.py` | Rende il menu "Le Proposte" nel hamburger sempre visibile (vedi sotto) |
+| `build_youtube_feed.py` | Genera in home il feed scorrevole degli ultimi video YouTube |
 | `check_links.py` | Verifica che ogni riferimento locale punti a un file esistente |
 
 Per riaggiornare la copia dopo modifiche al sito originale, **in quest'ordine**:
@@ -35,14 +37,35 @@ Per riaggiornare la copia dopo modifiche al sito originale, **in quest'ordine**:
 ```bash
 python tools/mirror.py site
 python tools/fetch_media.py site export
-python tools/rewrite_domain.py site      # rinomina anche le cartelle col vecchio dominio
-python tools/wire_contact_form.py site   # aggiungi l'endpoint se configurato
+python tools/rewrite_domain.py site        # rinomina anche le cartelle col vecchio dominio
+python tools/wire_contact_form.py site     # aggiungi l'endpoint se configurato
 python tools/fix_404.py site
 python tools/make_sitemap.py site
-python tools/check_links.py site         # deve dire: MANCANTI 0
+python tools/flatten_proposte_menu.py site
+python tools/build_youtube_feed.py site    # solo sulla home
+python tools/check_links.py site           # deve dire: MANCANTI 0
 ```
 
 L'ordine conta: `mirror.py` riscrive le pagine, quindi i passi successivi vanno rifatti dopo.
+
+### Modifiche editoriali rispetto all'originale
+
+Oltre alla copia 1:1, sono state applicate due modifiche richieste:
+
+- **Menu "Le Proposte"** — nel sito originale era un sottomenu che si apre solo
+  al passaggio del mouse o con JavaScript (Interactivity API di WordPress).
+  In un sito statico, specialmente su mobile/touch, questo è fragile. È stato
+  reso un elenco piatto sempre visibile: *Le Proposte* (link alla pagina indice),
+  *Legge elettorale proporzionale con preferenze*, *Cancellierato italiano*,
+  applicato a tutte le pagine (solo nell'header/hamburger, non nel footer).
+- **Home page** — la sezione con titolo e descrizione di "Cancellierato
+  Italiano" e "Legge Elettorale Proporzionale" è stata sostituita con una
+  fascia che mostra gli ultimi video del canale YouTube
+  [@iniziativepop](https://www.youtube.com/@iniziativepop), che scorrono
+  automaticamente in orizzontale (si ferma al passaggio del mouse/focus,
+  scorrimento manuale sempre disponibile, nessuna dipendenza da API key:
+  usa il feed RSS pubblico di YouTube). Per aggiornarla con i video più
+  recenti, rilancia `build_youtube_feed.py`.
 
 ### `site/` — il sito statico
 
