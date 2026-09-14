@@ -354,3 +354,100 @@ input, textarea {
  .sticky-header-offset-container .entry-content > .wp-block-group {
 	scroll-margin-top: var(--wp--preset--spacing--60);
 }
+
+/*
+ * Menu header (hamburger + pannello): implementazione propria,
+ * indipendente dalla Interactivity API di WordPress.
+ * Vedi tools/fix_header_nav.py per il perche'.
+ */
+.cip-nav {
+	display: flex;
+	align-items: center;
+}
+.cip-nav-toggle {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: inherit;
+}
+.cip-nav-toggle svg {
+	display: block;
+	fill: currentColor;
+}
+.cip-nav-row {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 24px;
+	align-items: center;
+	flex-wrap: wrap;
+	font-weight: 600;
+}
+.cip-nav-row a {
+	color: inherit;
+	text-decoration: none;
+}
+.cip-nav-row a:hover,
+.cip-nav-row a:focus-visible {
+	text-decoration: underline;
+}
+.cip-nav-panel {
+	position: fixed;
+	inset: 0;
+	background: #146894;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+.cip-nav-panel[hidden] {
+	display: none;
+}
+.cip-nav-panel-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	padding: 8px;
+}
+.cip-nav-panel-close svg {
+	fill: currentColor;
+	display: block;
+}
+.cip-nav-panel ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+	text-align: center;
+}
+.cip-nav-panel a {
+	color: #fff;
+	text-decoration: none;
+	font-size: clamp(1.15rem, 1rem + 1vw, 1.6rem);
+	font-weight: 700;
+}
+.cip-nav-panel a:hover,
+.cip-nav-panel a:focus-visible {
+	text-decoration: underline;
+}
+@media (min-width: 783px) {
+	.cip-nav-toggle {
+		display: none;
+	}
+	.cip-nav-row {
+		display: flex;
+	}
+}
