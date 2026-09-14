@@ -1,0 +1,4 @@
+Sitemap: https://iniziativepop.it/sitemap.xml
+
+User-agent: *
+Allow: /

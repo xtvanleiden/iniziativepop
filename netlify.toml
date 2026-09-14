@@ -1,0 +1,37 @@
+# Configurazione Netlify per iniziativepop.it
+# Sito statico: nessuna build, si pubblica direttamente la cartella site/
+
+[build]
+  publish = "site"
+
+# Netlify serve automaticamente site/404.html per le pagine inesistenti.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Gli upload di WordPress hanno nomi versionati: cache lunga.
+[[headers]]
+  for = "/wp-content/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/wp-includes/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Asset scaricati dalle CDN esterne (Jetpack, Google Fonts).
+[[headers]]
+  for = "/_ext/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# L'HTML deve essere rivalidato a ogni visita.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

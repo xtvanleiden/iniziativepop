@@ -1,0 +1,25 @@
+# File di sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Archivi generati per il deploy manuale
+*.zip
+
+# Log e file temporanei
+*.log
+_check.js
+
+# ATTENZIONE — dati personali
+# export/ contiene i 343 commenti e i profili autore esportati dal sito,
+# con indirizzi email di persone reali. Il repository su GitHub e' PUBBLICO,
+# quindi questa cartella resta esclusa dal push. Se un giorno il repo
+# diventasse privato, puoi commentare la riga sotto per includerla.
+export/
+
+# credenziale reale trovata nella media library del sito originale — mai da pubblicare
+site/wp-content/uploads/2025/06/stripe_backup_code.txt
