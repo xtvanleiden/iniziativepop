@@ -208,7 +208,7 @@ si sposta tutto in modo pulito.
 ## Cose da controllare prima di andare online
 
 - **Email**: nel sito originale il footer riporta `info@comitatoiniziativepopolari.it`.
-  Nella copia è stato riscritto in **`info@iniziativepop.it`** — va creata questa casella,
+  Nella copia è stato riscritto in **`info@comitatoiniziativepopolari.it`** — va creata questa casella,
   altrimenti il contatto non riceve nulla. L'indirizzo Gmail
   `comitatoiniziativepopolari@gmail.com` è stato lasciato invariato.
 - **Redirect 301** dal vecchio dominio al nuovo, per non perdere il posizionamento.
