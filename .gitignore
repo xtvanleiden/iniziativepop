@@ -25,3 +25,7 @@ export/
 site/wp-content/uploads/2025/06/stripe_backup_code.txt
 
 .vercel
+
+# copie sciolte dei loghi lasciate nella root del progetto — la sorgente
+# ufficiale vive in loghi/
+/logo_*.png
