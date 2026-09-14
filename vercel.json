@@ -16,7 +16,13 @@
       ]
     },
     {
-      "source": "/wp-content/(.*)",
+      "source": "/wp-content/plugins/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/wp-content/themes/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
@@ -28,9 +34,15 @@
       ]
     },
     {
-      "source": "/_ext/(.*)",
+      "source": "/_ext/(.*).(css|js|woff|woff2|ttf|eot)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*).(jpg|jpeg|png|gif|webp|svg|ico|pdf|docx?|xlsx?)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]

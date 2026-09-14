@@ -13,9 +13,14 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Gli upload di WordPress hanno nomi versionati: cache lunga.
+# Codice del tema/plugin/core WordPress: file statici, cache lunga sicura.
 [[headers]]
-  for = "/wp-content/*"
+  for = "/wp-content/plugins/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/wp-content/themes/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -24,11 +29,56 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Asset scaricati dalle CDN esterne (Jetpack, Google Fonts).
+# CSS/JS/font scaricati dalle CDN esterne (Jetpack, Google Fonts): il percorso
+# include gia' il numero di versione del plugin/tema, cache lunga sicura.
 [[headers]]
-  for = "/_ext/*"
+  for = "/_ext/**/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/_ext/**/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/_ext/**/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Media (immagini, PDF, documenti): il NOME FILE non cambia quando il
+# contenuto viene sostituito (es. il logo) — mai cache immutabile qui,
+# sempre rivalidato (l'ETag rende comunque le riviste successive veloci).
+[[headers]]
+  for = "/**/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/**/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # L'HTML deve essere rivalidato a ogni visita.
 [[headers]]
