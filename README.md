@@ -30,6 +30,8 @@ Sorgente: `https://comitatoiniziativepopolari.it/`
 | `make_sitemap.py` | Genera `sitemap.xml` e `robots.txt` per il nuovo dominio |
 | `flatten_proposte_menu.py` | Rende il menu "Le Proposte" nel hamburger sempre visibile (vedi sotto) |
 | `build_youtube_feed.py` | Genera in home il feed scorrevole degli ultimi video YouTube |
+| `replace_logo.py` | Sostituisce tutte le varianti del logo con una nuova immagine sorgente |
+| `remove_contact_page.py` | Toglie "Contattaci" da menu e sitemap e cancella la pagina |
 | `check_links.py` | Verifica che ogni riferimento locale punti a un file esistente |
 
 Per riaggiornare la copia dopo modifiche al sito originale, **in quest'ordine**:
@@ -66,6 +68,17 @@ Oltre alla copia 1:1, sono state applicate due modifiche richieste:
   scorrimento manuale sempre disponibile, nessuna dipendenza da API key:
   usa il feed RSS pubblico di YouTube). Per aggiornarla con i video più
   recenti, rilancia `build_youtube_feed.py`.
+- **Rebranding "Iniziative Popolari"** — title, meta tag, logo e testo del
+  generatore feed video aggiornati su tutte le pagine (404 inclusa). I testi
+  legali (Statuto, Privacy Policy) e i riferimenti a PDF esistenti restano
+  invariati. L'intestatario del bonifico IBAN nella pagina Iscrizione resta
+  **Comitato Iniziative Popolari**, il nome legale del conto corrente.
+- **Logo** — sostituite tutte le varianti (header, favicon, apple-touch-icon,
+  og:image) con il nuovo badge, stessi nomi/dimensioni file. Sorgenti in
+  `loghi/`.
+- **Pagina Contattaci rimossa** — tolta dal menu (header e footer) su tutte
+  le pagine e cancellata come pagina; chi vuole scrivere usa direttamente
+  gli indirizzi email già visibili nel footer.
 
 ### `site/` — il sito statico
 
