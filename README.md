@@ -1,6 +1,6 @@
 # iniziativepop.it — copia di comitatoiniziativepopolari.it
 
-Copia completa del sito del **Comitato Iniziative Popolari**, preparata per il nuovo dominio
+Copia completa del sito del **Iniziative Popolari**, preparata per il nuovo dominio
 **iniziativepop.it**.
 
 Data copia: 14 settembre 2026

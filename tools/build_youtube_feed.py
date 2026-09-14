@@ -79,7 +79,7 @@ def build_section(soup, videos, channel_url):
     sub = soup.new_tag("p", attrs={
         "style": "text-align:center;color:#3a5a68;margin:0 0 32px;font-size:1rem",
     })
-    sub.string = "Gli aggiornamenti del Comitato Iniziative Popolari, in diretta dal nostro canale YouTube."
+    sub.string = "Gli aggiornamenti del Iniziative Popolari, in diretta dal nostro canale YouTube."
     section.append(sub)
 
     wrap = soup.new_tag("div", attrs={"class": "cip-yt-track-wrap"})
